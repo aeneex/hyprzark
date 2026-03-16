@@ -1,0 +1,168 @@
+/* color tokens */
+@define-color bg rgba(0, 0, 0, 0.5);
+@define-color mod-fg rgba(0, 0, 0, 1);
+@define-color mod-bg rgba(163, 160, 157, 1);
+
+
+* /* global reset and base font */ {
+    font-family: "SF UI Text", "Cousine Nerd Font Propo";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+window#waybar /* main bar */ {
+    background-color: @bg;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden /* bar auto-hide state */ {
+    opacity: 0.2;
+}
+
+window#waybar.termite /* termite terminal active */ {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium /* chromium active */ {
+    background-color: #000000;
+    border: none;
+}
+
+
+button /* base button — box-shadow used over border to avoid text offset */ {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+
+#workspaces button /* default workspace pill */ {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    margin: 4px 0px;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused,
+#workspaces button.active /* currently active workspace */ {
+    background-color: @mod-bg;
+    color: @mod-fg;
+}
+
+#workspaces button.urgent /* workspace with urgent window */ {
+    background-color: #eb4d4b;
+}
+
+
+#mode /* sway mode indicator (resize, etc.) */ {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+
+#window /* focused window title */ {
+    margin: 0 4px;
+}
+
+
+#custom-rofi /* app launcher button */ {
+    background-color: @mod-bg;
+    color: @mod-fg;
+    margin: 4px 0px;
+    padding: 0px 8px;
+    border-radius: 2px;
+}
+
+
+#clock,
+#custom-brightness,
+#pulseaudio,
+#tray,
+#custom-notification,
+#mpd /* shared pill style for status modules */ {
+    padding: 0 10px;
+    margin: 4px 0px;
+    color: @mod-fg;
+    background-color: @mod-bg;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+#custom-brightness /* screen brightness */ {
+    padding: 0 6px;
+}
+
+#mpris /* media player info */ {
+    border-radius: 4px;
+    padding: 0px 8px;
+    margin: 4px 0;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
+}
+
+#mpris.playing {
+    color: @mod-bg;
+}
+
+#mpris.paused {
+    color: @mod-fg;
+    background-color: @mod-bg;
+}
+
+#tray menu,
+#tray menuitem,
+#custom-power menu /* dropdown menus */ {
+    margin: 0px;
+    padding: 4px 0px;
+    border-radius: 8px;
+}
+
+#custom-power,
+#pulseaudio.muted /* transparent by default, no background pill */ {
+    background-color: @transparent;
+    color: white;
+    padding: 0 10px;
+    margin: 4px 0px;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+#custom-power:hover,
+#pulseaudio.muted:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 0 10px;
+    margin: 4px 0px;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+
+#clock:hover,
+#custom-brightness:hover,
+#pulseaudio:hover,
+#custom-power:hover,
+#tray:hover /* pill modules fade to transparent on hover */ {
+    background-color: @transparent;
+    color: white;
+}
+
+
+.modules-left > widget:first-child > #custom-rofi /* left edge: remove extra left margin */ {
+    margin-left: 4px;
+}
+
+.modules-right > widget:last-child > #custom-power /* right edge: remove extra right margin */ {
+    margin-right: 4px;
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "$HOME/.config/swaync/configSchema.json",
+
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "layer-shell-cover-screen": true,
+  "cssPriority": "user",
+  "ignore-gtk-theme": true,
+
+  "notification-window-width": 360,
+  "notification-window-margin": 10,
+  "notification-icon-size": 32,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+  "image-visibility": "when-available",
+
+  "timeout": 5,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "transition-time": 200,
+
+  "hide-on-action": true,
+  "hide-on-clear": false,
+  "fit-to-screen": false,
+  "keyboard-shortcuts": true,
+  "notification-grouping": true,
+  "notification-inline-replies": false,
+  "notification-2fa-action": true,
+  "relative-timestamps": true,
+  "script-fail-notify": true,
+  "text-empty": "No Notifications",
+
+  "control-center-width": 500,
+  "control-center-height": 600,
+  "control-center-margin-top": 10,
+  "control-center-margin-right": 10,
+  "control-center-margin-bottom": 0,
+  "control-center-margin-left": 0,
+
+  "widgets": [
+    "inhibitors",
+    "title",
+    "dnd",
+    "notifications"
+  ],
+
+  "widget-config": {
+    "notifications": {
+      "vexpand": true
+    },
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    }
+  }
+}

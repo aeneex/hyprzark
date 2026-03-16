@@ -1,0 +1,33 @@
+# Oh my zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+source $ZSH/oh-my-zsh.sh
+
+# Plugins
+plugins=(git)
+
+# Syntax Highlighting and powerlevel10k
+source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Aliases
+alias v="nvim"
+alias install="sudo pacman -S"
+alias update="sudo pacman -Syu"
+alias fresh="clear ; history -c"
+alias bye="shutdown -h now"
+alias wink="reboot"
+alias rem="sudo pacman -R"
+alias pur="sudo pacman -Rns"
+alias ff="fastfetch"
+alias sv="sudo -E nvim"
+alias never="history -c ; exit"
+alias time="tty-clock"
+alias ls="exa --icons"
+alias t="exa --tree --icons"
+alias show="nsxiv"
+alias h="history | fzf"
+alias s="yay -Ss"
+
+# Export related stuff
+export PATH="$PATH:/home/ixubux/.local/bin"
+export PATH=$PATH:/home/ixubux/.spicetify

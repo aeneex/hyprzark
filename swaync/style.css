@@ -1,0 +1,39 @@
+/* Universal Settings */
+* {
+  font-family: "SF UI Text", "Cousine Nerd Font";
+  font-size: 13px;
+}
+
+/* notification */
+.notification {
+    background: rgba(9,4,4,0.55);                   /* Notification background */
+    color: #c1c0c0ff;                               /* Text color */
+    border-radius: 0px;                            /* Corner rounding */
+    border: 2px solid #D5D0CCff;                    /* Border style */
+    padding: 12px;                                  /* Inner spacing */
+}
+
+.notification-content {
+    padding: 0;                                     /* Remove default padding */
+}
+
+.notification-default-action:hover {
+    background: transparent;                        /* No highlight on hover */
+}
+
+/* notification icon */
+.notification-icon {
+    min-width: 48px;                                /* Icon container width */
+    min-height: 48px;                               /* Icon container height */
+}
+
+.notification-icon image {
+    -gtk-icon-size: 48px;                           /* Icon render size — change this to resize */
+}
+
+/* control center */
+.control-center {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;                            /* Corner rounding */
+    border: 2px solid #D5D0CCff;                    /* Border style */
+}

@@ -1,0 +1,598 @@
+{
+  "$schema": "file://${HOME}/.config/swaync/configSchema.json",
+  "title": "SwayNotificationCenter config schema",
+  "type": "object",
+  "additionalProperties": false,
+
+  "properties": {
+
+    "$schema": {
+      "type": "string",
+      "description": "Pointer to the schema this document is validated against"
+    },
+
+    "ignore-gtk-theme": {
+      "type": "boolean",
+      "default": true,
+      "description": "Unsets GTK_THEME env var, fixes GTK themes breaking custom CSS"
+    },
+
+    "positionX": {
+      "type": "string",
+      "default": "right",
+      "description": "Horizontal position of the notification window and control center",
+      "enum": ["right", "left", "center"]
+    },
+
+    "positionY": {
+      "type": "string",
+      "default": "top",
+      "description": "Vertical position of the notification window and control center",
+      "enum": ["top", "center", "bottom"]
+    },
+
+    "layer": {
+      "type": "string",
+      "default": "overlay",
+      "description": "Layer-shell layer of the notification window",
+      "enum": ["background", "bottom", "top", "overlay"]
+    },
+
+    "layer-shell": {
+      "type": "boolean",
+      "default": true,
+      "description": "Open windows as layer-shell surfaces. Requires restart to apply"
+    },
+
+    "layer-shell-cover-screen": {
+      "type": "boolean",
+      "default": true,
+      "description": "Extend layer-shell surface to cover the full screen. Fixes animations in Hyprland"
+    },
+
+    "cssPriority": {
+      "type": "string",
+      "default": "highest",
+      "description": "GTK priority for loading CSS. Use 'user' to override ~/.config/gtk-4.0/gtk.css",
+      "enum": ["application", "user"]
+    },
+
+    "control-center-layer": {
+      "type": "string",
+      "default": "none",
+      "description": "Layer-shell layer of the control center window",
+      "enum": ["background", "bottom", "top", "overlay", "none"]
+    },
+
+    "control-center-positionX": {
+      "type": "string",
+      "default": "none",
+      "description": "Horizontal position of the control center. Overrides positionX when not 'none'",
+      "enum": ["right", "left", "center", "none"]
+    },
+
+    "control-center-positionY": {
+      "type": "string",
+      "default": "none",
+      "description": "Vertical position of the control center. Overrides positionY when not 'none'",
+      "enum": ["top", "bottom", "none"]
+    },
+
+    "control-center-margin-top": {
+      "type": "integer",
+      "default": 0,
+      "description": "Top margin of the control center in pixels. 0 to disable"
+    },
+
+    "control-center-margin-bottom": {
+      "type": "integer",
+      "default": 0,
+      "description": "Bottom margin of the control center in pixels. 0 to disable"
+    },
+
+    "control-center-margin-right": {
+      "type": "integer",
+      "default": 0,
+      "description": "Right margin of the control center in pixels. 0 to disable"
+    },
+
+    "control-center-margin-left": {
+      "type": "integer",
+      "default": 0,
+      "description": "Left margin of the control center in pixels. 0 to disable"
+    },
+
+    "control-center-exclusive-zone": {
+      "type": "boolean",
+      "default": true,
+      "description": "Respect compositor exclusive zones. Set false to overlay panels/docks"
+    },
+
+    "control-center-width": {
+      "type": "integer",
+      "default": 500,
+      "description": "Width of the control center in pixels",
+      "minimum": 300
+    },
+
+    "control-center-height": {
+      "type": "integer",
+      "default": 500,
+      "description": "Height of the control center in pixels. -1 to fit content. Ignored when fit-to-screen is true",
+      "minimum": -1
+    },
+
+    "control-center-preferred-output": {
+      "type": "string",
+      "description": "Preferred monitor for the control center. Connector name (e.g. DP-1) or full name. Falls back to focused monitor"
+    },
+
+    "notification-window-width": {
+      "type": "integer",
+      "default": 500,
+      "description": "Width of the notification popup in pixels"
+    },
+
+    "notification-window-height": {
+      "type": "integer",
+      "default": -1,
+      "description": "Max height of the notification popup in pixels. -1 for compositor default"
+    },
+
+    "notification-window-margin": {
+      "type": "integer",
+      "default": 0,
+      "description": "Margin around the notification window in pixels"
+    },
+
+    "notification-window-preferred-output": {
+      "type": "string",
+      "description": "Preferred monitor for popups. Connector name or full name. Falls back to focused monitor"
+    },
+
+    "notification-icon-size": {
+      "type": "integer",
+      "default": -1,
+      "deprecated": true,
+      "description": "Deprecated — use CSS variable --notification-icon-size instead"
+    },
+
+    "notification-body-image-height": {
+      "type": "integer",
+      "default": 100,
+      "description": "Notification body image height in pixels",
+      "minimum": 100
+    },
+
+    "notification-body-image-width": {
+      "type": "integer",
+      "default": 200,
+      "description": "Notification body image width in pixels",
+      "minimum": 200
+    },
+
+    "notification-2fa-action": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show a 'COPY' action button for 2FA code notifications"
+    },
+
+    "notification-inline-replies": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show inline reply field when sender requests it. Requires ON_DEMAND keyboard interactivity from compositor"
+    },
+
+    "notification-grouping": {
+      "type": "boolean",
+      "default": true,
+      "description": "Group notifications by app name"
+    },
+
+    "image-visibility": {
+      "type": "string",
+      "default": "when-available",
+      "description": "When to show the notification image when no icon is available",
+      "enum": ["always", "when-available", "never"]
+    },
+
+    "timeout": {
+      "type": "integer",
+      "default": 10,
+      "description": "Timeout in seconds for normal priority notifications"
+    },
+
+    "timeout-low": {
+      "type": "integer",
+      "default": 5,
+      "description": "Timeout in seconds for low priority notifications"
+    },
+
+    "timeout-critical": {
+      "type": "integer",
+      "default": 0,
+      "description": "Timeout in seconds for critical notifications. 0 to disable"
+    },
+
+    "transition-time": {
+      "type": "integer",
+      "default": 200,
+      "description": "Notification animation duration in milliseconds. 0 to disable"
+    },
+
+    "fit-to-screen": {
+      "type": "boolean",
+      "default": true,
+      "description": "Expand the control center to both screen edges"
+    },
+
+    "relative-timestamps": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show timestamps as relative (e.g. '5 minutes ago'). False for ISO 8601 absolute time"
+    },
+
+    "keyboard-shortcuts": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable keyboard shortcuts in the control center"
+    },
+
+    "hide-on-clear": {
+      "type": "boolean",
+      "default": false,
+      "description": "Close the control center after pressing Clear All"
+    },
+
+    "hide-on-action": {
+      "type": "boolean",
+      "default": true,
+      "description": "Close the control center when a notification action is clicked"
+    },
+
+    "text-empty": {
+      "type": "string",
+      "default": "No Notifications",
+      "description": "Text shown when there are no notifications"
+    },
+
+    "script-fail-notify": {
+      "type": "boolean",
+      "default": true,
+      "description": "Send a notification if a script fails to run"
+    },
+
+    "scripts": {
+      "type": "object",
+      "description": "Scripts to run when a matching notification is received or acted on. Only the first match runs. All fields except exec use regex",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^.{1,}$": {
+          "type": "object",
+          "required": ["exec"],
+          "minProperties": 2,
+          "additionalProperties": false,
+          "properties": {
+            "exec":           { "type": "string", "description": "Shell command to run" },
+            "app-name":       { "type": "string", "description": "Match app name. Regex" },
+            "desktop-entry":  { "type": "string", "description": "Match desktop entry. Regex" },
+            "summary":        { "type": "string", "description": "Match notification summary. Regex" },
+            "body":           { "type": "string", "description": "Match notification body. Regex" },
+            "category":       { "type": "string", "description": "Match notification category. Regex" },
+            "sound-file":     { "type": "string", "description": "Match requested sound file. Regex" },
+            "sound-name":     { "type": "string", "description": "Match requested sound name. Regex" },
+            "urgency": {
+              "type": "string",
+              "default": "Normal",
+              "description": "Match urgency level",
+              "enum": ["Low", "Normal", "Critical"]
+            },
+            "run-on": {
+              "type": "string",
+              "default": "receive",
+              "description": "When to run the script",
+              "enum": ["action", "receive"]
+            }
+          }
+        }
+      }
+    },
+
+    "notification-action-filter": {
+      "type": "object",
+      "description": "Hide specific actions on matching notifications. Requires id-matcher or text-matcher",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^.{1,}$": {
+          "type": "object",
+          "minProperties": 1,
+          "anyOf": [
+            { "required": ["id-matcher"] },
+            { "required": ["text-matcher"] }
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "use-regex":      { "type": "boolean", "default": false, "description": "Use regex for all match fields" },
+            "app-name":       { "type": "string", "description": "Match app name" },
+            "desktop-entry":  { "type": "string", "description": "Match desktop entry" },
+            "id-matcher":     { "type": "string", "description": "Match action identifier (see G_MESSAGES_DEBUG=all output)" },
+            "text-matcher":   { "type": "string", "description": "Match action text visible in the notification" }
+          }
+        }
+      }
+    },
+
+    "notification-visibility": {
+      "type": "object",
+      "description": "Override visibility state for matching notifications. Only the first match applies. All fields except state use regex",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^.{1,}$": {
+          "type": "object",
+          "required": ["state"],
+          "minProperties": 2,
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "type": "string",
+              "default": "enabled",
+              "description": "Visibility state to apply",
+              "enum": ["ignored", "muted", "enabled", "transient"]
+            },
+            "override-urgency": {
+              "type": "string",
+              "default": "unset",
+              "description": "Override the notification urgency",
+              "enum": ["unset", "low", "normal", "critical"]
+            },
+            "app-name":       { "type": "string", "description": "Match app name. Regex" },
+            "desktop-entry":  { "type": "string", "description": "Match desktop entry. Regex" },
+            "summary":        { "type": "string", "description": "Match notification summary. Regex" },
+            "body":           { "type": "string", "description": "Match notification body. Regex" },
+            "category":       { "type": "string", "description": "Match notification category. Regex" },
+            "urgency": {
+              "type": "string",
+              "default": "Normal",
+              "description": "Match urgency level",
+              "enum": ["Low", "Normal", "Critical"]
+            }
+          }
+        }
+      }
+    },
+
+    "widgets": {
+      "type": "array",
+      "uniqueItems": true,
+      "default": ["inhibitors", "title", "dnd", "notifications"],
+      "description": "Widget order and selection. 'notifications' is appended at bottom if omitted",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9_-]{1,}(#[a-zA-Z0-9_-]{1,}){0,1}?$"
+      }
+    },
+
+    "widget-config": {
+      "type": "object",
+      "description": "Per-widget configuration",
+      "additionalProperties": false,
+      "patternProperties": {
+        "notifications":                        { "$ref": "#/widgets/notifications" },
+        "^title(#[a-zA-Z0-9_-]{1,}){0,1}?$":  { "$ref": "#/widgets/title" },
+        "^dnd(#[a-zA-Z0-9_-]{1,}){0,1}?$":    { "$ref": "#/widgets/dnd" },
+        "^label(#[a-zA-Z0-9_-]{1,}){0,1}?$":  { "$ref": "#/widgets/label" },
+        "^mpris(#[a-zA-Z0-9_-]{1,}){0,1}?$":  { "$ref": "#/widgets/mpris" },
+        "^buttons-grid(#[a-zA-Z0-9_-]{1,}){0,1}?$": { "$ref": "#/widgets/buttons-grid" },
+        "^menubar(#[a-zA-Z0-9_-]{1,}){0,1}?$":      { "$ref": "#/widgets/menubar" },
+        "^slider(#[a-zA-Z0-9_-]{1,}){0,1}?$":       { "$ref": "#/widgets/slider" },
+        "^volume(#[a-zA-Z0-9_-]{1,}){0,1}?$":       { "$ref": "#/widgets/volume" },
+        "^backlight(#[a-zA-Z0-9_-]{1,}){0,1}?$":    { "$ref": "#/widgets/backlight" },
+        "^inhibitors(#[a-zA-Z0-9_-]{1,}){0,1}?$":   { "$ref": "#/widgets/inhibitors" }
+      }
+    }
+
+  },
+
+  "widgets": {
+
+    "notifications": {
+      "type": "object",
+      "description": "Notifications list widget",
+      "additionalProperties": false,
+      "properties": {
+        "vexpand": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow the widget to expand vertically"
+        }
+      }
+    },
+
+    "title": {
+      "type": "object",
+      "description": "Control center title bar widget",
+      "additionalProperties": false,
+      "properties": {
+        "text":             { "type": "string",  "default": "Notifications", "description": "Title text" },
+        "clear-all-button": { "type": "boolean", "default": true,            "description": "Show a Clear All button" },
+        "button-text":      { "type": "string",  "default": "Clear All",     "description": "Clear All button label" }
+      }
+    },
+
+    "dnd": {
+      "type": "object",
+      "description": "Do Not Disturb toggle widget",
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string", "default": "Do Not Disturb", "description": "Widget label" }
+      }
+    },
+
+    "label": {
+      "type": "object",
+      "description": "Static text label widget",
+      "additionalProperties": false,
+      "properties": {
+        "text":      { "type": "string",  "default": "Label Text", "description": "Text content" },
+        "max-lines": { "type": "integer", "default": 5,            "description": "Maximum lines to display" }
+      }
+    },
+
+    "inhibitors": {
+      "type": "object",
+      "description": "Inhibitors list widget",
+      "additionalProperties": false,
+      "properties": {
+        "text":             { "type": "string",  "default": "Inhibitors", "description": "Widget title" },
+        "clear-all-button": { "type": "boolean", "default": true,         "description": "Show a Clear All button" },
+        "button-text":      { "type": "string",  "default": "Clear All",  "description": "Clear All button label" }
+      }
+    },
+
+    "mpris": {
+      "type": "object",
+      "description": "Media player widget via MPRIS",
+      "additionalProperties": false,
+      "properties": {
+        "image-size": {
+          "type": "integer",
+          "default": -1,
+          "deprecated": true,
+          "description": "Deprecated — use CSS variable --mpris-album-art-icon-size instead"
+        },
+        "show-album-art": {
+          "type": "string",
+          "default": "always",
+          "description": "When to show album art",
+          "enum": ["always", "when-available", "never"]
+        },
+        "autohide": {
+          "type": "boolean",
+          "default": false,
+          "description": "Hide widget when player has no metadata"
+        },
+        "loop-carousel": {
+          "type": "boolean",
+          "default": false,
+          "description": "Loop through the player carousel"
+        },
+        "blacklist": {
+          "type": "array",
+          "description": "Audio sources to ignore. Regex allowed",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "buttons-grid": {
+      "type": "object",
+      "description": "Grid of command buttons",
+      "additionalProperties": false,
+      "properties": {
+        "buttons-per-row": {
+          "type": "number",
+          "description": "Number of buttons per row"
+        },
+        "actions": {
+          "type": "array",
+          "description": "List of button actions",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label":          { "type": "string",  "default": "label",   "description": "Button label" },
+              "command":        { "type": "string",  "default": "",        "description": "Shell command to run on click" },
+              "type":           { "type": "string",  "default": "normal",  "description": "Button type. Toggle buttons get .active class and SWAYNC_TOGGLE_STATE env var", "enum": ["normal", "toggle"] },
+              "update-command": { "type": "string",  "default": "",        "description": "Command to update toggle state on CC open. Should echo true or false" },
+              "active":         { "type": "boolean", "default": false,     "description": "Default active state for toggle buttons" }
+            }
+          }
+        }
+      }
+    },
+
+    "menubar": {
+      "type": "object",
+      "description": "Top bar with action buttons and dropdown menus",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^menu(#[a-zA-Z0-9_-]{1,}){0,1}?$": {
+          "type": "object",
+          "description": "Dropdown menu button",
+          "additionalProperties": false,
+          "properties": {
+            "label":              { "type": "string",  "default": "Menu",       "description": "Button label" },
+            "position":           { "type": "string",  "default": "right",      "description": "Button position in the bar", "enum": ["right", "left"] },
+            "animation-type":     { "type": "string",  "default": "slide_down", "description": "Dropdown animation", "enum": ["slide_down", "slide_up", "none"] },
+            "animation-duration": { "type": "integer", "default": 250,          "description": "Animation duration in milliseconds" },
+            "actions": { "$ref": "#/widgets/buttons-grid/properties/actions" }
+          }
+        },
+        "^buttons(#[a-zA-Z0-9_-]{1,}){0,1}?$": {
+          "type": "object",
+          "description": "Inline action buttons in the top bar",
+          "additionalProperties": false,
+          "properties": {
+            "position": { "type": "string", "default": "right", "description": "Button position in the bar", "enum": ["right", "left"] },
+            "actions": { "$ref": "#/widgets/buttons-grid/properties/actions" }
+          }
+        }
+      }
+    },
+
+    "slider": {
+      "type": "object",
+      "description": "Generic slider widget",
+      "additionalProperties": false,
+      "properties": {
+        "label":       { "type": "string",  "default": "slider", "description": "Label displayed in front of the slider" },
+        "cmd_setter":  { "type": "string",  "default": "",       "description": "Command to set the value. Use $value for current value" },
+        "cmd_getter":  { "type": "string",  "default": "",       "description": "Command to get the current value. Use $value for current value" },
+        "min":         { "type": "integer", "default": 0,        "description": "Minimum value" },
+        "max":         { "type": "integer", "default": 100,      "description": "Maximum value" },
+        "min_limit":   { "type": "integer", "default": 0,        "description": "Hard minimum limit" },
+        "max_limit":   { "type": "integer", "default": 100,      "description": "Hard maximum limit" },
+        "value_scale": { "type": "integer", "default": 0,        "description": "Scale for small values / rounding digits" }
+      }
+    },
+
+    "volume": {
+      "type": "object",
+      "description": "PulseAudio volume slider widget",
+      "additionalProperties": false,
+      "properties": {
+        "label":                 { "type": "string",  "default": "Volume",              "description": "Label in front of slider" },
+        "show-per-app":          { "type": "boolean", "default": false,                 "description": "Show per-app volume controls" },
+        "show-per-app-icon":     { "type": "boolean", "default": true,                  "description": "Show app icon in per-app controls" },
+        "show-per-app-label":    { "type": "boolean", "default": false,                 "description": "Show app name in per-app controls" },
+        "expand-per-app":        { "type": "boolean", "default": false,                 "description": "Start per-app section expanded" },
+        "empty-list-label":      { "type": "string",  "default": "No active sink input","description": "Text when no active sink inputs exist" },
+        "expand-button-label":   { "type": "string",  "default": "⇧",                  "description": "Button label to show per-app controls" },
+        "collapse-button-label": { "type": "string",  "default": "⇩",                  "description": "Button label to hide per-app controls" },
+        "animation-type":        { "type": "string",  "default": "slide_down",          "description": "Animation type", "enum": ["slide_down", "slide_up", "none"] },
+        "animation-duration":    { "type": "integer", "default": 250,                   "description": "Animation duration in milliseconds" },
+        "icon-size": {
+          "type": "integer",
+          "default": -1,
+          "deprecated": true,
+          "description": "Deprecated — use CSS variable --widget-volume-row-icon-size instead"
+        }
+      }
+    },
+
+    "backlight": {
+      "type": "object",
+      "description": "Monitor brightness slider widget",
+      "additionalProperties": false,
+      "properties": {
+        "label":      { "type": "string",  "default": "Brightness",       "description": "Label in front of slider" },
+        "device":     { "type": "string",  "default": "intel_backlight",  "description": "Backlight device name. See: ls /sys/class/backlight or ls /sys/class/leds" },
+        "subsystem":  { "type": "string",  "default": "backlight",        "description": "Kernel subsystem for brightness control", "enum": ["backlight", "leds"] },
+        "min":        { "type": "integer", "default": 0,                  "description": "Minimum brightness value" }
+      }
+    }
+
+  }
+}

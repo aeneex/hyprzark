@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name = Snapchat
+Type = Application
+Exec = brave --profile-directory=Default --app=https://snapchat.com/web --start-maximized
+Keywords = sc

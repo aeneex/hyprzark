@@ -1,0 +1,47 @@
+@theme "~/.config/rofi/wallsetter/theme/chain.rasi"
+
+* {
+    bg4: #00000080;
+    bg5: #E3DCD7;
+    bg7: #665353;
+}
+
+window {
+    background-color: @bg4;
+    border: 1px;
+    border-color: @bg5;
+    border-radius: 0px;
+}
+
+inputbar {
+    background-color: @bg4;
+    border-color: @bg5;
+    border-radius: 0px;
+    cursor: text;
+}
+
+entry {
+    placeholder-color: @bg5;
+    cursor: text;
+}
+
+listview {
+    fixed-height: true;
+    cursor: pointer;
+}
+
+element {
+  text-color: @bg5;
+  cursor: pointer;
+}
+
+element selected normal, element selected active {
+    background-color:   @bg5;
+    border-radius: 0px;
+    text-color: #282828;
+    cursor: pointer;
+}
+
+prompt {
+    enabled: false;
+}

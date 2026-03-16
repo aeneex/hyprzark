@@ -1,0 +1,181 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/rofi",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "mpris",
+        "custom/notification",
+        "custom/brightness",
+        "pulseaudio",
+        // "cpu",
+        // "memory",
+        // "temperature",
+        // "battery",
+        "tray",
+        "custom/power"
+    ],
+
+    "custom/rofi": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun -theme ~/.config/rofi/appsearcher/config.rasi",
+    "tooltip": false
+},
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+          "10": ""
+        }
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d %b %Y (%A)}"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{}% "
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "mpris": {
+        "format": "{status_icon} {title} - {artist}",
+        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+        "player-icons": {
+            "default": "" 
+        },
+
+        // status icons variable
+        "status-icons": {
+            "playing": "🎜",
+            "paused": "⏸"
+        },
+
+        // Allowed text Length
+        "max-length": 50,
+
+        // on click controls
+        "on-click": "playerctl play-pause",
+        "on-scroll-down": "playerctl previous",
+        "on-scroll-up": "playerctl next"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/mic": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 1,
+    "exec": "/home/ixubux/.config/waybar/scripts/mic-control.sh",
+    "on-click": "/home/ixubux/.config/waybar/scripts/mic-control.sh toggle",
+    "tooltip": true
+},
+
+    "custom/brightness": {
+        "format": "󰃠 {}%",
+        "exec": "ddcutil getvcp 10 --terse | awk '{print $4}'",
+        "interval": 5,
+        "on-scroll-up": "ddcutil setvcp 10 + 5 --sleep-multiplier .1",
+        "on-scroll-down": "ddcutil setvcp 10 - 5 --sleep-multiplier .1",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰟎",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+"custom/notification": {
+    "exec": "swaync-client -swb",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂚",
+        "dnd-notification": "󱅫",
+        "dnd-none": "󰂛"
+    },
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+},
+
+    "custom/power": {
+        "format" : "⏻",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown now",
+			"reboot": "reboot",
+			"sleep": "systemctl suspend",
+			"logout": "hyprctl dispatch exit"
+		}
+    }
+   }
