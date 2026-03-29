@@ -90,6 +90,7 @@ button /* base button — box-shadow used over border to avoid text offset */ {
 #custom-brightness,
 #pulseaudio,
 #tray,
+#custom-updates,
 #custom-notification,
 #mpd /* shared pill style for status modules */ {
     padding: 0 10px;

@@ -89,6 +89,9 @@ echo "Installing yay packages"
 yay_packages=(
     brave-bin
     tty-clock
+    waybar-module-pacman-updates-git
+    tela-circle-icon-theme-black
+    kernel-modules-hook
 )
 
 for pkg in "${yay_packages[@]}"; do
