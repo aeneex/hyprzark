@@ -92,6 +92,7 @@ yay_packages=(
     waybar-module-pacman-updates-git
     tela-circle-icon-theme-black
     kernel-modules-hook
+    activate-linux
 )
 
 for pkg in "${yay_packages[@]}"; do
