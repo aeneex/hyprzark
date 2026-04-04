@@ -162,7 +162,7 @@
        },
        "exec-if": "which waybar-module-pacman-updates",
        "exec": "waybar-module-pacman-updates",
-       "on-click": "kitty sh -c '(yay -Syu); echo -e \"\nProcess finished. Press Enter to close.\"; read line; pkill -RTMIN+8 waybar'"
+       "on-click": "waybar-module-pacman-updates && pkill -RTMIN+8 waybar"
 },
 
 "custom/notification": {
