@@ -16,6 +16,7 @@ find "$BASE_DIR" -type f -name "*.desktop" -exec chmod 644 {} +
 
 # Config folders to copy
 config_folders=(
+    btop
     cava
     fastfetch
     hypr
