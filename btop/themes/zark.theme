@@ -1,0 +1,86 @@
+# Btop theme derived from colors.conf
+# Dark warm monochrome palette
+
+# Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+# example for white: "#FFFFFF", "#ff" or "255 255 255".
+
+# All graphs and meters can be gradients
+# For single color graphs leave "mid" and "end" variable empty.
+# Use "start" and "end" variables for two color gradient
+# Use "start", "mid" and "end" for three color gradient
+
+# Main background — color0 (deep dark brownish-black)
+theme[main_bg]="#090404"
+
+# Main text color — color5 (warm light gray, near white)
+theme[main_fg]="#E3DCD7"
+
+# Title color for boxes — color15 (neutral light gray)
+theme[title]="#c1c0c0"
+
+# Highlight color for keyboard shortcuts — color7 (medium gray, subtle contrast)
+theme[hi_fg]="#c1c0c0"
+
+# Background color of selected items — color6 (off-white warm gray)
+theme[selected_bg]="#E1E0DF"
+
+# Foreground color of selected items — color0 (dark background, readable on light)
+theme[selected_fg]="#090404"
+
+# Color of inactive/disabled text — color8 (muted warm gray)
+theme[inactive_fg]="#665353"
+
+# Color of text appearing on top of graphs
+theme[graph_text]="#A3A09D"
+
+# Misc colors for processes box — color3 (mid-light gray)
+theme[proc_misc]="#C3C0BC"
+
+# Box outline colors — color8 (muted warm tone, recedes visually)
+theme[cpu_box]="#665353"
+theme[mem_box]="#665353"
+theme[net_box]="#665353"
+theme[proc_box]="#665353"
+
+# Box divider line — color8
+theme[div_line]="#665353"
+
+# Temperature graph: cool → warm → hot using gray scale tones
+theme[temp_start]="#B2B0AD"
+theme[temp_mid]="#A3A09D"
+theme[temp_end]="#665353"
+
+# CPU graph: light → mid → muted
+theme[cpu_start]="#E3DCD7"
+theme[cpu_mid]="#C3C0BC"
+theme[cpu_end]="#A3A09D"
+
+# Mem/Disk free meter — color6 (near white, positive/safe)
+theme[free_start]="#E1E0DF"
+theme[free_mid]=""
+theme[free_end]=""
+
+# Mem/Disk cached meter — color4 (light gray)
+theme[cached_start]="#D5D0CC"
+theme[cached_mid]=""
+theme[cached_end]=""
+
+# Mem/Disk available meter — color3
+theme[available_start]="#C3C0BC"
+theme[available_mid]=""
+theme[available_end]=""
+
+# Mem/Disk used meter — color8 (darker, warns of usage)
+theme[used_start]="#665353"
+theme[used_mid]=""
+theme[used_end]=""
+
+# Download graph — color2 (mid-light gray)
+theme[download_start]="#B2B0AD"
+theme[download_mid]=""
+theme[download_end]=""
+
+# Upload graph — color1 (slightly warmer gray)
+theme[upload_start]="#A3A09D"
+theme[upload_mid]=""
+theme[upload_end]=""
