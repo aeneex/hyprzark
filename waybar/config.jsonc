@@ -153,16 +153,15 @@
     },
 
 "custom/updates": {
-       "format": "{} {icon}",
-       "return-type": "json",
-       "format-icons": {
-           "has-updates": "󱍷",
-           "updated": "󰂪",
-          "interval": 3600
-       },
-       "exec-if": "which waybar-module-pacman-updates",
-       "exec": "waybar-module-pacman-updates",
-       "on-click": "waybar-module-pacman-updates && pkill -RTMIN+8 waybar"
+    "format": "{} {icon}",
+    "return-type": "json",
+    "format-icons": {
+        "has-updates": "󱍷",
+        "updated": "󰂪"
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --network-interval-seconds 21600",
+    "on-click": "waybar-module-pacman-updates && pkill -RTMIN+8 waybar"
 },
 
 "custom/notification": {
