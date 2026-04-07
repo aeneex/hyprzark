@@ -25,6 +25,7 @@ config_folders=(
     rofi
     swaync
     waybar
+    xdg-desktop-portal
 )
 
 # Copy config folders to ~/.config
