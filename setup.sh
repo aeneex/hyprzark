@@ -19,6 +19,7 @@ config_folders=(
     btop
     cava
     fastfetch
+    gowall
     hypr
     kitty
     ranger
