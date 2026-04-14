@@ -43,11 +43,12 @@ core_packages=(
     pamixer
     playerctl
     libnotify
+    swaync
     noto-fonts-cjk
     hyprlock
     ddcutil
 
-# important for smooth OBS recording
+# important for smooth recording
     pipewire
     pipewire-pulse
     pipewire-alsa
