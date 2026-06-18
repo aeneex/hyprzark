@@ -25,6 +25,7 @@ fi
 echo "Installing core packages"
 core_packages=(
     fzf
+    wl-clipboard
     exa
     unzip
     zip
