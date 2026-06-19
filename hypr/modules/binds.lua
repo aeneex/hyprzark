@@ -29,9 +29,9 @@ hl.bind(mainMod .. " + SHIFT + R",           hl.dsp.exec_cmd("killall -9 waybar 
 hl.bind(mainMod .. " + P",                   hl.dsp.window.pseudo())
 
 -- System Controls
-hl.bind("F10", hl.dsp.exec_cmd("pctl set-sink-mute @DEFAULT_SINK@ toggle"))
-hl.bind("F11", hl.dsp.exec_cmd("pctl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%"))
-hl.bind("F12", hl.dsp.exec_cmd("pctl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+hl.bind("F10", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+hl.bind("F11", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+hl.bind("F12", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%"))
 
 -- Brightness controls (Repeating bind enabled)
 hl.bind("F8", hl.dsp.exec_cmd("ddcutil setvcp 10 - 5 --sleep-multiplier .1"), { repeating = true })
