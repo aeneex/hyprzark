@@ -45,6 +45,7 @@ core_packages=(
     playerctl
     libnotify
     swaync
+    awww
     noto-fonts-cjk
     hyprlock
     ddcutil
@@ -92,7 +93,6 @@ yay_packages=(
     brave-bin
     tty-clock
     waybar-module-pacman-updates-git
-    tela-circle-icon-theme-black
     kernel-modules-hook
     activate-linux
 )
