@@ -1,17 +1,20 @@
 {
-    "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 34, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "layer":    "top",         // Waybar at top layer
+ // "position": "bottom",      // Waybar position (top|bottom|left|right)
+    "height":   34,            // Waybar height (to be removed for auto height)
+ // "width":    1280,          // Waybar width
+    "spacing":  4,             // Gaps between modules (4px)
+
+ // Choose the order of the modules
     "modules-left": [
         "custom/rofi",
         "hyprland/workspaces"
     ],
+
     "modules-center": [
         "clock"
     ],
+
     "modules-right": [
         "mpris",
         "custom/updates",
@@ -27,10 +30,10 @@
     ],
 
     "custom/rofi": {
-    "format": "󰣇",
-    "on-click": "rofi -show drun -theme ~/.config/rofi/appsearcher/config.rasi",
-    "tooltip": false
-},
+        "format": "󰣇",
+        "on-click": "rofi -show drun -theme ~/.config/rofi/appsearcher/config.rasi",
+        "tooltip": false
+    },
 
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -81,7 +84,6 @@
 
         // status icons variable
         "status-icons": {
-            "playing": "🎜",
             "paused": "⏸"
         },
 
@@ -117,13 +119,13 @@
     },
 
     "custom/mic": {
-    "format": "{}",
-    "return-type": "json",
-    "interval": 1,
-    "exec": "/home/ixubux/.config/waybar/scripts/mic-control.sh",
-    "on-click": "/home/ixubux/.config/waybar/scripts/mic-control.sh toggle",
-    "tooltip": true
-},
+        "format": "{}",
+        "return-type": "json",
+        "interval": 1,
+        "exec": "/home/ixubux/.config/waybar/scripts/mic-control.sh",
+        "on-click": "/home/ixubux/.config/waybar/scripts/mic-control.sh toggle",
+        "tooltip": true
+    },
 
     "custom/brightness": {
         "format": "󰃠 {}%",
@@ -133,6 +135,16 @@
         "on-scroll-down": "ddcutil setvcp 10 - 5 --sleep-multiplier .1",
         "tooltip": false
     },
+
+    // Use this module and comment out the version up there 
+    // "custom/brightness": {
+    //     "format": "󰃠 {}%",
+    //     "exec": "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}'",
+    //     "interval": 2,
+    //     "on-scroll-up": "brightnessctl set +5%",
+    //     "on-scroll-down": "brightnessctl set 5%-",
+    //     "tooltip": false
+    // },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -152,43 +164,43 @@
         "on-click-right": "pavucontrol"
     },
 
-"custom/updates": {
-    "format": "{} {icon}",
-    "return-type": "json",
-    "format-icons": {
-        "has-updates": "󱍷",
-        "updated": "󰂪"
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": "󰂪"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --network-interval-seconds 21600",
+        "on-click": "waybar-module-pacman-updates && pkill -RTMIN+8 waybar"
     },
-    "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates --network-interval-seconds 21600",
-    "on-click": "waybar-module-pacman-updates && pkill -RTMIN+8 waybar"
-},
 
-"custom/notification": {
-    "exec": "swaync-client -swb",
-    "return-type": "json",
-    "format": "{icon}",
-    "format-icons": {
-        "notification": "󱅫",
-        "none": "󰂚",
-        "dnd-notification": "󱅫",
-        "dnd-none": "󰂛"
+    "custom/notification": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󱅫",
+            "dnd-none": "󰂛"
+        },
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-},
 
     "custom/power": {
         "format" : "⏻",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml",
-		"menu-actions": {
-			"shutdown": "shutdown now",
-			"reboot": "reboot",
-			"sleep": "systemctl suspend",
-			"logout": "hyprctl dispatch exit"
-		}
+		    "tooltip": false,
+		    "menu": "on-click",
+		    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+		    "menu-actions": {
+			      "shutdown": "shutdown now",
+			      "reboot": "reboot",
+			      "sleep": "systemctl suspend",
+			      "logout": "hyprctl dispatch exit"
+		    }
     }
-   }
+}
