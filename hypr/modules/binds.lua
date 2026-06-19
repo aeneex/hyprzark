@@ -1,6 +1,6 @@
 -- Application Variables
 local terminal             =    'kitty'
-local fileManager          =    'nautilus'
+local fileManager          =    'pcmanfm'
 local menu                 =    'rofi -show drun -theme "~/.config/rofi/appsearcher/config.rasi"'
 local wallpaper            =    'bash ~/.config/rofi/wallsetter/wallsetter.sh'
 local powermenu            =    'bash ~/.config/rofi/powermenu/powermenu.sh'
