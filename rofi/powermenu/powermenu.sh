@@ -3,7 +3,7 @@
 ## USER COMMANDS
 shutdown="systemctl poweroff"
 reboot="systemctl reboot"
-lock="betterlockscreen -l"
+lock="hyprlock"
 suspend="systemctl suspend"
 logout="hyprctl dispatch exit"
 
