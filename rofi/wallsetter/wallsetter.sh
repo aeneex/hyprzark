@@ -13,4 +13,4 @@ selection=$(echo "$display_list" | rofi -dmenu -i -theme "$HOME/.config/rofi/wal
 # Find the actual file with extension
 actual_file=$(ls "$WALLDIR" | grep "^${selection}\.")
 
-swww img "$WALLDIR/$actual_file" -t wipe --transition-fps 180
+awww img "$WALLDIR/$actual_file" -t wipe --transition-fps 180
