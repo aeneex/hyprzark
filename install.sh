@@ -48,6 +48,7 @@ core_packages=(
     awww
     noto-fonts-cjk
     hyprlock
+    hyprshutdown
     ddcutil
 
 # important for smooth recording
