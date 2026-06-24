@@ -144,7 +144,6 @@ Custom fonts are installed to `/usr/share/fonts/`:
 |------|-------|
 | **Caskaydia Cove Nerd Font** | Terminal & code |
 | **Cousine Nerd Font** | UI elements |
-| **Noto Color Emoji** | Emoji support |
 | **SF UI Text** | General UI text |
 
 ---
@@ -181,17 +180,18 @@ The repo doesn't ship with the GTK theme and icon pack used in the screenshots. 
 
 ## Notes
 
-- Built on Wayland — no X11 required
+- Built on Wayland
 - Smooth Hyprland animations out of the box
 - Designed to feel like a complete desktop environment, not just a WM config
 - All configs are clean, well-structured, and easy to modify
 - Minimal bloat, maximum intentionality
+- Before installation, packages can be managed from the install.sh in case you don't want a package to be installed or wanna replace it with something else. (I don't guarantee the setup not breaking after that though)
 
 ---
 
 ## Credits
 
-HyprZark — built with ☕, patience, and a lot of `hyprctl reload`
+HyprZark. Built with ☕, patience, and completely in [NvChad](https://nvchad.com)
 
 ## License
 
