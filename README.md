@@ -28,9 +28,10 @@ If you loved Zark, you'll feel right at home. If you're new — welcome to your 
 - **Terminal**: Kitty
 - **Notifications**: SwayNC
 - **Audio Visualizer**: Cava
-- **Shell**: Zsh with Oh My Zsh
+- **Shell**: Zsh
 - **File Manager**: Ranger
 - **System Info**: Fastfetch
+- **Screen Lock**: Hyprlock
 
 ---
 
@@ -59,32 +60,79 @@ chmod +x install.sh
 ```
 
 The script will automatically:
-- Update your system
-- Install `yay` (AUR helper)
-- Install all required packages
-- Run `setup.sh` to deploy all configuration files
+- Update your system (`pacman -Syyu`)
+- Install `yay` if not already present
+- Install all required packages with conflict resolution and verification
+- Run `setup.sh` to deploy all configuration files and dotfiles
 
-> You only need to run `install.sh` — it takes care of everything including calling `setup.sh` on its own.
+> You only need to run `install.sh` — it calls `setup.sh` automatically.
 
 3. Reboot for everything to take effect.
+
+### What the installer does differently
+
+The install scripts are built to not silently fail. Specifically:
+
+- Every package install is **verified** via `pacman -Qi` after the fact
+- File conflicts are resolved automatically with `--overwrite`
+- Package-level conflicts are resolved by removing the offending package before retrying
+- Keyring and signature errors trigger an `archlinux-keyring` refresh and retry
+- All output is written to a timestamped log file (`install-YYYYMMDD-HHMMSS.log`) next to the script
+- Failed packages are collected and printed as a summary at the end instead of silently disappearing
 
 ---
 
 ## What Gets Installed
 
 ### Core Packages
-- `hyprland`, `waybar`, `rofi`, `kitty`
-- `swaync`, `cava`, `fastfetch`
-- `zsh`, `oh-my-zsh`
-- `ranger`, `fzf`, `eza`, `unzip`
-- `nsxiv`, `neovim`, `mpv`
+| Package | Purpose |
+|---------|---------|
+| `hyprlock` | Screen locker |
+| `waybar` | Status bar |
+| `rofi` | Application launcher |
+| `swaync` | Notification daemon |
+| `btop` | System monitor |
+| `cava` | Audio visualizer |
+| `exa` | Modern `ls` replacement |
+| `fastfetch` | System info display |
+| `fzf` | Fuzzy finder |
+| `neovim` | Text editor |
+| `ranger` | Terminal file manager |
+| `unzip`, `zip` | Archive utilities |
+| `awww` | Wallpaper daemon |
+| `ddcutil` | Monitor brightness control |
+| `libnotify` | Notification library |
+| `noto-fonts-cjk` | CJK font support |
+| `pamixer` | PulseAudio CLI mixer |
+| `playerctl` | Media player control |
+| `wl-clipboard` | Wayland clipboard |
+| `imagemagick` | Image processing |
+| `mpv` | Media player |
+| `nsxiv` | Image viewer |
+| `pipewire` + plugins | Audio stack |
+| `wireplumber` | PipeWire session manager |
+| `rtkit` | Realtime scheduling |
+| `xdg-desktop-portal` + backends | Portal support for Wayland |
+| `libva-nvidia-driver` | NVIDIA VA-API (remove if no NVIDIA GPU) |
 
 ### Basic Packages
-- `gnome-calculator`, `gnome-calendar`
-- `nwg-look`, `btop`
+| Package | Purpose |
+|---------|---------|
+| `gnome-calculator` | Calculator |
+| `gnome-calendar` | Calendar |
+| `lxappearance` | GTK theme switcher |
+| `nwg-look` | GTK settings for Wayland |
+| `pavucontrol` | Audio control GUI |
+| `pcmanfm` | GUI file manager |
 
-### AUR Packages
-- `brave-bin`
+### AUR Packages (via yay)
+| Package | Purpose |
+|---------|---------|
+| `activate-linux` | "Activate Windows"-style watermark |
+| `brave-bin` | Brave browser (remove if unused) |
+| `kernel-modules-hook` | Rebuilds modules after kernel updates |
+| `tty-clock` | Terminal clock |
+| `waybar-module-pacman-updates-git` | Waybar update count module |
 
 ---
 
@@ -96,7 +144,7 @@ Custom fonts are installed to `/usr/share/fonts/`:
 |------|-------|
 | **Caskaydia Cove Nerd Font** | Terminal & code |
 | **Cousine Nerd Font** | UI elements |
-| **Noto Color Emoji** | Emoji support across the desktop |
+| **Noto Color Emoji** | Emoji support |
 | **SF UI Text** | General UI text |
 
 ---
@@ -114,8 +162,12 @@ All configs land in `~/.config/` after setup:
 | SwayNC | `~/.config/swaync/` |
 | Cava | `~/.config/cava/` |
 | Ranger | `~/.config/ranger/` |
+| Fastfetch | `~/.config/fastfetch/` |
+| Gowall | `~/.config/gowall/` |
+| XDG Portal | `~/.config/xdg-desktop-portal/` |
 
-Zsh configuration lives at `~/.zshrc`
+Zsh configuration lives at `~/.zshrc`.
+Wallpapers are copied to `~/Wallpapers/`.
 
 ---
 
