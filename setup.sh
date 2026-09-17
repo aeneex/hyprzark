@@ -38,6 +38,7 @@ config_folders=(
     ranger
     rofi
     swaync
+    tmux
     waybar
     xdg-desktop-portal
 )
