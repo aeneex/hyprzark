@@ -215,9 +215,11 @@ core_packages=(
     # small gui utilities
     imagemagick mpv nsxiv
 
-    # recording related utilities
-    libva-nvidia-driver # Remove if you don't have an nvidia GPU
+    # recording related packages
+    # libva-nvidia-driver # Uncomment if you want to install
     pipewire pipewire-alsa pipewire-jack pipewire-pulse rtkit wireplumber
+
+    # Desktop Portals
     xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-hyprland
 )
 
