@@ -204,7 +204,7 @@ fi
 core_packages=(
 
     # desktop components
-    hyprlock rofi swaync waybar
+    hyprlock hyprshutdown rofi swaync waybar
 
     # terminal helper tools
     btop cava exa fastfetch fzf neovim ranger unzip zip
