@@ -5,7 +5,8 @@ shutdown="systemctl poweroff"
 reboot="systemctl reboot"
 lock="hyprlock"
 suspend="systemctl suspend"
-logout="hyprshutdown"
+logout="hyprctl dispatch 'hl.dsp.exit()'"
+## logout="hyprshutdown"
 
 # System info
 uptime=$(uptime -p | sed -e 's/up //g')
